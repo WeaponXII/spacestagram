@@ -39,7 +39,6 @@ const Index = () => {
     )
       .then((res) => res.json())
       .then((vals) => {
-        console.log(vals);
         setData(vals);
       })
       .catch((e) => setFail(true));
