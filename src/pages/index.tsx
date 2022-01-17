@@ -46,7 +46,7 @@ const Index = () => {
       .catch((e) => setFail(true));
   }, []);
   useEffect(() => {
-    likes ? localStorage.setItem("likes", JSON.stringify(likes)) : setLikes["undefined"];
+    localStorage.setItem("likes", JSON.stringify(likes));
   }, [likes]);
   useEffect(() => {
     setData([...data.reverse()]);
@@ -133,7 +133,13 @@ const Index = () => {
                 color={"red"}
                 size={"lg"}
                 fontSize={"2em"}
-                variant={likes.includes(item.url) ? "solid" : "ghost"}
+                variant={
+                  likes
+                    ? likes.includes(item.url)
+                      ? "solid"
+                      : "ghost"
+                    : "ghost"
+                }
                 aria-label={"Like image" + item.title}
                 _active={{
                   bg: "red",
@@ -141,8 +147,12 @@ const Index = () => {
                   borderColor: "red",
                 }}
                 icon={
-                  likes.includes(item.url) ? (
-                    <AiFillHeart />
+                  likes ? (
+                    likes.includes(item.url) ? (
+                      <AiFillHeart />
+                    ) : (
+                      <AiOutlineHeart />
+                    )
                   ) : (
                     <AiOutlineHeart />
                   )
