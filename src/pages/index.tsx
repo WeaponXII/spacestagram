@@ -25,7 +25,9 @@ const Index = () => {
   const [data, setData] = useState<Array<any>>([]);
   const [loadFail, setFail] = useState<boolean>(false);
   const [likes, setLikes] = useState<Array<any>>(() => {
-    return JSON.parse(localStorage.getItem("likes")) || [];
+    return typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("likes"))
+      : null || [];
   });
   const [sortRecent, setSort] = useState<boolean>(false);
   const [copyText, setCopy] = useState<string>();
