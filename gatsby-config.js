@@ -3,7 +3,8 @@ require("dotenv").config({
 });
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://spacesta-gram.netlify.app`,
+    siteTitle: `Spacestagram`,
   },
   plugins: ["@chakra-ui/gatsby-plugin"],
 };

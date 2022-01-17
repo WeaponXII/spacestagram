@@ -27,7 +27,7 @@ const Index = () => {
   const [likes, setLikes] = useState<Array<any>>(() => {
     return typeof window !== "undefined"
       ? JSON.parse(localStorage.getItem("likes"))
-      : null || [];
+      : [] || [];
   });
   const [sortRecent, setSort] = useState<boolean>(false);
   const [copyText, setCopy] = useState<string>();
