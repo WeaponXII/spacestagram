@@ -158,9 +158,11 @@ const Index = () => {
                   )
                 }
                 onClick={() =>
-                  likes.includes(item.url)
-                    ? setLikes(likes.filter((item) => item.name !== item.url))
-                    : setLikes([...likes, item.url])
+                  likes
+                    ? likes.includes(item.url)
+                      ? setLikes(likes.filter((item) => item.name !== item.url))
+                      : setLikes([...likes, item.url])
+                    : likes[item.url]
                 }
               />
               <Button
