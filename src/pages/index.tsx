@@ -25,9 +25,11 @@ const Index = () => {
   const [data, setData] = useState<Array<any>>([]);
   const [loadFail, setFail] = useState<boolean>(false);
   const [likes, setLikes] = useState<Array<any>>(() => {
-    return typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem("likes"))
-      : ["undefined"] || ["undefined"];
+    let savedLikes =
+      typeof window !== "undefined"
+        ? JSON.parse(localStorage.getItem("likes"))
+        : [] || [];
+    return savedLikes;
   });
   const [sortRecent, setSort] = useState<boolean>(false);
   const [copyText, setCopy] = useState<string>();
@@ -44,7 +46,7 @@ const Index = () => {
       .catch((e) => setFail(true));
   }, []);
   useEffect(() => {
-    localStorage.setItem("likes", JSON.stringify(likes));
+    likes ? localStorage.setItem("likes", JSON.stringify(likes)) : null;
   }, [likes]);
   useEffect(() => {
     setData([...data.reverse()]);
