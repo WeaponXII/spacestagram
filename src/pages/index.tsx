@@ -27,7 +27,7 @@ const Index = () => {
   const [likes, setLikes] = useState<Array<any>>(() => {
     let savedLikes =
       typeof window !== "undefined"
-        ? JSON.parse(localStorage.getItem("likes"))
+        ? JSON.parse(localStorage.getItem("likes")) ?? []
         : [] || [];
     return savedLikes;
   });
@@ -46,7 +46,7 @@ const Index = () => {
       .catch((e) => setFail(true));
   }, []);
   useEffect(() => {
-    likes[0] ? localStorage.setItem("likes", JSON.stringify(likes)) : null;
+    localStorage.setItem("likes", JSON.stringify(likes));
   }, [likes]);
   useEffect(() => {
     setData([...data.reverse()]);
